@@ -1,0 +1,39 @@
+<div class="login">
+    <div class="card" style="width: 320px;">
+        <div class="card-body">
+            <h5 class="card-title text-center">Login</h5>
+
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <!-- Email -->
+                <div class="mb-3">
+                    <label class="form-label">Email address</label>
+                    <input type="text" class="form-control" formControlName="email">
+                    <small
+                        *ngIf="loginFormControl.email.invalid && (loginFormControl.email.dirty || loginFormControl.email.touched)">
+                        <div class="text-danger" *ngIf="loginFormControl.email.errors?.['required']">Email is required.
+                        </div>
+                        <div class="text-danger" *ngIf="loginFormControl.email.errors?.['email']">Email should be valid
+                        </div>
+                    </small>
+                </div>
+                <!-- Password -->
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" formControlName="password">
+                    <small
+                        *ngIf="loginFormControl.password.invalid && (loginFormControl.password.dirty || loginFormControl.password.touched)">
+                        <div class="text-danger" *ngIf="loginFormControl.password.errors?.['required']">Password is
+                            required.</div>
+                    </small>
+                </div>
+                <!-- Submit form -->
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid">Login</button>
+                </div>
+            </form>
+
+            <div class="mt-4 text-center">Not a member? <a routerLink="/register">Register</a> </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+<div class="register">
+    <div class="card" style="width: 320px;">
+        <div class="card-body">
+            <h5 class="card-title text-center">Register</h5>
+
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <!-- Fullname -->
+                <div class="mb-3">
+                    <label class="form-label">Fullname</label>
+                    <input type="text" class="form-control" formControlName="fullname">
+                    <small
+                        *ngIf="registerFormControl.fullname.invalid && (registerFormControl.fullname.dirty || registerFormControl.fullname.touched)">
+                        <div class="text-danger" *ngIf="registerFormControl.fullname.errors?.['required']">Fullname is
+                            required
+                        </div>
+                        <div class="text-danger" *ngIf="registerFormControl.fullname.errors?.['pattern']">Enter valid
+                            name
+                        </div>
+                    </small>
+                </div>
+                <!-- Email -->
+                <div class="mb-3">
+                    <label class="form-label">Email address</label>
+                    <input type="text" class="form-control" formControlName="email">
+                    <small
+                        *ngIf="registerFormControl.email.invalid && (registerFormControl.email.dirty || registerFormControl.email.touched)">
+                        <div class="text-danger" *ngIf="registerFormControl.email.errors?.['required']">Email is
+                            required
+                        </div>
+                        <div class="text-danger" *ngIf="registerFormControl.email.errors?.['email']">Email should be
+                            valid
+                        </div>
+                    </small>
+                </div>
+                <!-- Password -->
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" formControlName="password">
+                    <small
+                        *ngIf="registerFormControl.password.invalid && (registerFormControl.password.dirty || registerFormControl.password.touched)">
+                        <div class="text-danger" *ngIf="registerFormControl.password.errors?.['required']">Password
+                            is required</div>
+                    </small>
+                </div>
+                <!-- Confirm Password -->
+                <div class="mb-3">
+                    <label class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" formControlName="confirmPassword">
+                    <small
+                        *ngIf="registerFormControl.confirmPassword.invalid && (registerFormControl.confirmPassword.dirty || registerFormControl.confirmPassword.touched)">
+                        <div class="text-danger" *ngIf="registerFormControl.confirmPassword.errors?.['required']">
+                            Confirm password is required</div>
+                    </small>
+                    <small class="text-danger"
+                        *ngIf="registerForm.errors?.['passwordMisMatch'] && registerFormControl.confirmPassword.valid && registerFormControl.password.valid">
+                        Password should match
+                    </small>
+                </div>
+                <!-- Submit form -->
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary w-100" [disabled]="registerForm.invalid">Register</button>
+                </div>
+            </form>
+
+            <div class="mt-4 text-center">Already a member? <a routerLink="/login">Login</a> </div>
+
+        </div>
+    </div>
+</div>
