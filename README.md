@@ -16,6 +16,7 @@ This Angular Authentication App is designed to provide user authentication funct
 2. Navigate to the project directory: `cd angular-authentication-app`.
 3. Install dependencies: `npm install`.
 4. Run the application: `ng serve`.
+5. Start JSON server: `json-server --watch db.json`.
 
 ## Usage
 1. Sign Up: Users can create a new account by providing their email and password.
